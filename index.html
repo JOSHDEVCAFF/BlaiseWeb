@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5ee">
+  <meta name="description" content="Fresh food and everyday essentials, shared with care at the Neighbourhood Pantry.">
+  <title>Pantry Items — Neighbourhood Pantry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-page="pantry">
+  <div class="site-frame">
+    <div id="site-header"></div>
+    <div class="frame-body">
+      <div id="site-nav"></div>
+      <main id="main-content">
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Good food. Good neighbours.</p>
+            <h1>Fresh food for <em>every</em> neighbour.</h1>
+            <p class="hero-intro">A little help goes a long way. Find fresh groceries and everyday essentials at neighbour-friendly prices.</p>
+            <a class="button button-dark" href="#pantry-items">Explore the pantry <span aria-hidden="true">↘</span></a>
+            <div class="hero-note"><span class="status-dot"></span> Open today · 9:00 AM–4:00 PM</div>
+          </div>
+          <div class="hero-visual">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1100&q=85" alt="A colourful display of fresh vegetables at a local market">
+            <div class="image-caption"><span>From our community, for our community</span><span>01 / 04</span></div>
+            <span class="hero-sticker" aria-label="Affordable groceries">Good<br>prices <span>✳</span></span>
+          </div>
+          <div class="hero-index"><span>01</span> COMMUNITY PANTRY</div>
+        </section>
+
+        <section class="pantry-section section-pad" id="pantry-items">
+          <div class="section-heading">
+            <div><p class="eyebrow">A little of what you need</p><h2>On the pantry shelves</h2></div>
+            <p>Availability changes daily. Choose what works for you and we’ll have it ready at pickup.</p>
+          </div>
+          <div class="filter-row" role="group" aria-label="Filter pantry items">
+            <button class="filter-button active" data-filter="All">All items <span>08</span></button>
+            <button class="filter-button" data-filter="Produce">Produce</button>
+            <button class="filter-button" data-filter="Pantry">Pantry</button>
+            <button class="filter-button" data-filter="Chilled">Chilled</button>
+            <button class="filter-button" data-filter="Essentials">Essentials</button>
+          </div>
+          <div class="product-grid" id="product-grid" aria-live="polite"></div>
+        </section>
+
+        <section class="pickup-band">
+          <div class="pickup-icon" aria-hidden="true">↗</div>
+          <div><p class="eyebrow">Simple, affordable pickup</p><h2>Good things are just around the corner.</h2></div>
+          <a class="button button-light" href="checkout.html">Plan your pickup <span aria-hidden="true">→</span></a>
+        </section>
+      </main>
+      <div id="site-aside"></div>
+    </div>
+    <div id="site-footer"></div>
+  </div>
+</body>
+</html>
