@@ -8,135 +8,110 @@ const dishes = [
   { id: "milk-tea", name: "Classic milk tea", description: "Creamy, chilled & just the right amount of sweet", cuisine: "Drinks", image: "photo-1558857563-b371033873b8", price: 110, tag: "CHILLED" },
   { id: "spring-rolls", name: "Crispy spring rolls", description: "Golden vegetable rolls · 4 pcs", cuisine: "Drinks", image: "photo-1547592180-85f173990554", price: 125, tag: "CRUNCHY SIDE" }
 ];
-
 const basketKey = "lea-asian-kitchen-basket-v1";
+const ordersKey = "lea-asian-kitchen-sample-orders-v1";
 const peso = amount => new Intl.NumberFormat("en-PH", { style: "currency", currency: "PHP", maximumFractionDigits: 0 }).format(amount);
 
+function readStorage(key, fallback) {
+  try { const value = JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)); return value; }
+  catch (error) { console.warn(`Could not read ${key}.`, error); return fallback; }
+}
 function readBasket() {
-  try {
-    const value = JSON.parse(localStorage.getItem(basketKey) || "{}");
-    return value && typeof value === "object" && !Array.isArray(value) ? value : {};
-  } catch (error) {
-    console.warn("Could not read the sample basket.", error);
-    return {};
-  }
+  const value = readStorage(basketKey, {});
+  return value && typeof value === "object" && !Array.isArray(value) ? value : {};
 }
-
 function saveBasket(basket) {
-  try {
-    localStorage.setItem(basketKey, JSON.stringify(basket));
-  } catch (error) {
-    console.warn("Could not save the sample basket.", error);
-    showNotice("Your basket could not be saved in this browser.");
-  }
+  try { localStorage.setItem(basketKey, JSON.stringify(basket)); }
+  catch (error) { console.warn("Could not save the sample basket.", error); showNotice("Your basket could not be saved in this browser."); }
 }
-
 function showNotice(message) {
   let notice = document.querySelector(".site-notice");
-  if (!notice) {
-    notice = document.createElement("div");
-    notice.className = "site-notice";
-    notice.setAttribute("role", "status");
-    document.body.append(notice);
-  }
+  if (!notice) { notice = document.createElement("div"); notice.className = "site-notice"; notice.setAttribute("role", "status"); document.body.append(notice); }
   notice.textContent = message;
   window.clearTimeout(showNotice.timeout);
   showNotice.timeout = window.setTimeout(() => notice.remove(), 2600);
 }
-
-function updateBasketCount() {
-  const basket = readBasket();
-  const count = Object.values(basket).reduce((sum, quantity) => sum + (Number(quantity) || 0), 0);
-  document.getElementById("basket-count").textContent = `(${count})`;
+function basketTotal(basket = readBasket()) {
+  return dishes.reduce((sum, dish) => sum + dish.price * (Number(basket[dish.id]) || 0), 0);
 }
+function basketQuantity(basket = readBasket()) {
+  return Object.values(basket).reduce((sum, quantity) => sum + (Number(quantity) || 0), 0);
+}
+function updateBasketCount() { document.getElementById("basket-count").textContent = `(${basketQuantity()})`; }
 
 function renderDishes(filter = "All") {
   const grid = document.getElementById("product-grid");
   const visible = dishes.filter(dish => filter === "All" || dish.cuisine === filter);
-  grid.innerHTML = visible.map(dish => `
-    <article class="product-card">
-      <div class="product-image"><img src="https://images.unsplash.com/${dish.image}?auto=format&fit=crop&w=650&q=80" alt="${dish.name}" loading="lazy"><span class="product-tag">${dish.tag}</span></div>
-      <div class="product-info"><p class="product-cuisine">${dish.cuisine}</p><h3>${dish.name}</h3><p class="product-description">${dish.description}</p><div class="product-bottom"><strong class="product-price">${peso(dish.price)}</strong><button class="add-button" type="button" data-add="${dish.id}" aria-label="Add ${dish.name} to basket">Add to basket <span aria-hidden="true">+</span></button></div></div>
-    </article>`).join("");
-
+  grid.innerHTML = visible.map(dish => `<article class="product-card"><div class="product-image"><img src="https://images.unsplash.com/${dish.image}?auto=format&fit=crop&w=650&q=80" alt="${dish.name}" loading="lazy"><span class="product-tag">${dish.tag}</span></div><div class="product-info"><p class="product-cuisine">${dish.cuisine}</p><h3>${dish.name}</h3><p class="product-description">${dish.description}</p><div class="product-bottom"><strong class="product-price">${peso(dish.price)}</strong><button class="add-button" type="button" data-add="${dish.id}" aria-label="Add ${dish.name} to basket">Add to basket <span aria-hidden="true">+</span></button></div></div></article>`).join("");
   grid.querySelectorAll("[data-add]").forEach(button => button.addEventListener("click", () => {
-    const basket = readBasket();
-    basket[button.dataset.add] = (Number(basket[button.dataset.add]) || 0) + 1;
-    saveBasket(basket);
-    updateBasketCount();
-    renderBasket();
+    const basket = readBasket(); basket[button.dataset.add] = (Number(basket[button.dataset.add]) || 0) + 1;
+    saveBasket(basket); updateBasketCount(); renderBasket();
     showNotice(`${dishes.find(dish => dish.id === button.dataset.add).name} added to your basket`);
   }));
 }
-
 function renderBasket() {
   const container = document.getElementById("basket-items");
-  if (!container) return;
   const basket = readBasket();
   const entries = dishes.filter(dish => Number(basket[dish.id]) > 0);
-  const total = entries.reduce((sum, dish) => sum + dish.price * (Number(basket[dish.id]) || 0), 0);
-  container.innerHTML = entries.length ? entries.map(dish => `
-    <div class="basket-row"><img src="https://images.unsplash.com/${dish.image}?auto=format&fit=crop&w=120&q=75" alt="" loading="lazy"><div><strong>${dish.name}</strong><small>${peso(dish.price)} each</small></div><div class="quantity-control"><button type="button" data-change="-1" data-id="${dish.id}" aria-label="Remove one ${dish.name}">−</button><span>${Number(basket[dish.id])}</span><button type="button" data-change="1" data-id="${dish.id}" aria-label="Add one ${dish.name}">+</button></div></div>`).join("") : '<p class="basket-empty">Your basket is empty for now. Browse the menu and add a dish you love.</p>';
-  document.getElementById("basket-total-amount").textContent = peso(total);
+  container.innerHTML = entries.length ? entries.map(dish => `<div class="basket-row"><img src="https://images.unsplash.com/${dish.image}?auto=format&fit=crop&w=120&q=75" alt="" loading="lazy"><div><strong>${dish.name}</strong><small>${peso(dish.price)} each</small></div><div class="quantity-control"><button type="button" data-change="-1" data-id="${dish.id}" aria-label="Remove one ${dish.name}">−</button><span>${Number(basket[dish.id])}</span><button type="button" data-change="1" data-id="${dish.id}" aria-label="Add one ${dish.name}">+</button></div></div>`).join("") : '<p class="basket-empty">Your basket is empty for now. Browse the menu and add a dish you love.</p>';
+  document.getElementById("basket-total-amount").textContent = peso(basketTotal(basket));
   container.querySelectorAll("[data-change]").forEach(button => button.addEventListener("click", () => {
-    const current = readBasket();
-    const next = (Number(current[button.dataset.id]) || 0) + Number(button.dataset.change);
-    if (next > 0) current[button.dataset.id] = next;
-    else delete current[button.dataset.id];
-    saveBasket(current);
-    updateBasketCount();
-    renderBasket();
+    const current = readBasket(); const next = (Number(current[button.dataset.id]) || 0) + Number(button.dataset.change);
+    if (next > 0) current[button.dataset.id] = next; else delete current[button.dataset.id];
+    saveBasket(current); updateBasketCount(); renderBasket();
   }));
 }
-
+function renderOrders() {
+  const list = document.getElementById("orders-list");
+  const empty = document.getElementById("orders-empty");
+  const clear = document.getElementById("clear-orders");
+  const orders = readStorage(ordersKey, []);
+  if (!Array.isArray(orders)) return;
+  empty.hidden = orders.length > 0;
+  clear.hidden = orders.length === 0;
+  list.innerHTML = orders.map(order => `<article class="saved-order"><div><p class="eyebrow">SAMPLE ORDER · ${order.date}</p><h3>${order.name}</h3><p>${order.items.map(item => `${item.quantity} × ${item.name}`).join(" · ")}</p></div><strong>${peso(order.total)}</strong></article>`).join("");
+}
 function initFilters() {
   const buttons = document.querySelectorAll(".filter-button");
   buttons.forEach(button => button.addEventListener("click", () => {
-    buttons.forEach(item => {
-      const active = item === button;
-      item.classList.toggle("active", active);
-      item.setAttribute("aria-pressed", String(active));
-    });
+    buttons.forEach(item => { const active = item === button; item.classList.toggle("active", active); item.setAttribute("aria-pressed", String(active)); });
     renderDishes(button.dataset.filter);
   }));
+  document.querySelectorAll("[data-feature-filter]").forEach(link => link.addEventListener("click", () => {
+    const button = [...buttons].find(item => item.dataset.filter === link.dataset.featureFilter);
+    if (button) { button.click(); }
+  }));
 }
-
 function initMobileMenu() {
-  const toggle = document.querySelector(".menu-toggle");
-  const nav = document.getElementById("primary-navigation");
+  const toggle = document.querySelector(".menu-toggle"); const nav = document.getElementById("primary-navigation");
   toggle.addEventListener("click", () => {
     const isOpen = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", String(!isOpen));
-    nav.classList.toggle("is-open", !isOpen);
+    toggle.setAttribute("aria-expanded", String(!isOpen)); nav.classList.toggle("is-open", !isOpen);
     toggle.querySelector("span").textContent = isOpen ? "Menu" : "Close";
   });
   nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
-    toggle.setAttribute("aria-expanded", "false");
-    nav.classList.remove("is-open");
-    toggle.querySelector("span").textContent = "Menu";
+    toggle.setAttribute("aria-expanded", "false"); nav.classList.remove("is-open"); toggle.querySelector("span").textContent = "Menu";
+    nav.querySelectorAll("a").forEach(item => item.removeAttribute("aria-current")); link.setAttribute("aria-current", "page");
   }));
 }
-
 function initOrderForm() {
   document.getElementById("order-form").addEventListener("submit", event => {
     event.preventDefault();
-    const feedback = document.getElementById("order-feedback");
-    const basket = readBasket();
-    const quantity = Object.values(basket).reduce((sum, value) => sum + (Number(value) || 0), 0);
-    if (!quantity) {
-      feedback.textContent = "Your basket is empty. Add a dish from the menu first.";
-      return;
-    }
-    const name = new FormData(event.currentTarget).get("name").trim();
-    feedback.textContent = `Thanks, ${name}! Your sample order is ready for review. This demo does not send or place real orders.`;
-    event.currentTarget.reset();
+    const feedback = document.getElementById("order-feedback"); const basket = readBasket();
+    if (!basketQuantity(basket)) { feedback.textContent = "Your basket is empty. Add a dish from the menu first."; return; }
+    const formData = new FormData(event.currentTarget); const name = String(formData.get("name")).trim();
+    const items = dishes.filter(dish => Number(basket[dish.id]) > 0).map(dish => ({ name: dish.name, quantity: Number(basket[dish.id]) }));
+    const orders = readStorage(ordersKey, []); const safeOrders = Array.isArray(orders) ? orders : [];
+    safeOrders.unshift({ name, date: new Intl.DateTimeFormat("en-PH", { dateStyle: "medium" }).format(new Date()), items, total: basketTotal(basket) });
+    try { localStorage.setItem(ordersKey, JSON.stringify(safeOrders)); } catch (error) { console.warn("Could not save sample order.", error); }
+    try { localStorage.removeItem(basketKey); } catch (error) { console.warn("Could not clear basket.", error); }
+    event.currentTarget.reset(); feedback.textContent = `Thanks, ${name}! Your sample order was saved in this browser only. No order was sent.`;
+    updateBasketCount(); renderBasket(); renderOrders();
+  });
+  document.getElementById("clear-orders").addEventListener("click", () => {
+    try { localStorage.removeItem(ordersKey); } catch (error) { console.warn("Could not clear sample orders.", error); }
+    renderOrders(); showNotice("Saved sample orders cleared.");
   });
 }
-
 document.getElementById("year").textContent = new Date().getFullYear();
-renderDishes();
-renderBasket();
-updateBasketCount();
-initFilters();
-initMobileMenu();
-initOrderForm();
+renderDishes(); renderBasket(); renderOrders(); updateBasketCount(); initFilters(); initMobileMenu(); initOrderForm();

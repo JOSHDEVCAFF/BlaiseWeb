@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f8f4ec">
-  <meta name="description" content="Explore Chinese, Japanese, Korean and other Asian favourites at Lea's Asian Kitchen in Mandaue City, Cebu.">
+  <meta name="description" content="Explore Asian favourites and Lea's Kitchen pages: menu, story, services, FAQs, checkout and more in Mandaue City, Cebu.">
   <title>Lea's Asian Kitchen — A little taste of Asia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,91 +15,77 @@
 <body>
   <div class="site-frame">
     <header class="topbar">
-      <a class="brand" href="#home" aria-label="Lea's Asian Kitchen home">
-        <span class="brand-mark" aria-hidden="true">蓮</span>
-        <span><span class="brand-name">Lea's Asian Kitchen</span><span class="brand-tagline">A little taste of Asia</span></span>
-      </a>
+      <a class="brand" href="#home" aria-label="Lea's Asian Kitchen home"><span class="brand-mark" aria-hidden="true">蓮</span><span><span class="brand-name">Lea's Asian Kitchen</span><span class="brand-tagline">A little taste of Asia</span></span></a>
       <p class="header-note"><span class="status-dot"></span> Made fresh in Mandaue City</p>
-      <a class="basket-link" href="#order">Your basket <span id="basket-count">(0)</span></a>
+      <a class="basket-link" href="#checkout">Your basket <span id="basket-count">(0)</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span>Menu</span></button>
     </header>
-
     <div class="frame-body">
       <nav class="side-nav" id="primary-navigation" aria-label="Main navigation">
         <p class="nav-label">From Lea's kitchen</p>
         <ol class="nav-list">
           <li><a href="#home" aria-current="page"><span>01</span> Home</a></li>
-          <li><a href="#menu"><span>02</span> Our menu</a></li>
-          <li><a href="#story"><span>03</span> Our story</a></li>
-          <li><a href="#contact"><span>04</span> Find us</a></li>
-          <li><a href="#order"><span>05</span> Basket & order</a></li>
+          <li><a href="#menu"><span>02</span> Shop / Menu</a></li>
+          <li><a href="#about"><span>03</span> About Lea</a></li>
+          <li><a href="#profile"><span>04</span> Kitchen profile</a></li>
+          <li><a href="#team"><span>05</span> Team chart</a></li>
+          <li><a href="#history"><span>06</span> Our story</a></li>
+          <li><a href="#services"><span>07</span> Services</a></li>
+          <li><a href="#contact"><span>08</span> Contact</a></li>
+          <li><a href="#faq"><span>09</span> FAQ</a></li>
+          <li><a href="#portfolio"><span>10</span> Portfolio</a></li>
+          <li><a href="#featured"><span>11</span> Featured dishes</a></li>
+          <li><a href="#checkout"><span>12</span> Checkout</a></li>
+          <li><a href="#payment"><span>13</span> Payment info</a></li>
+          <li><a href="#orders"><span>14</span> My orders</a></li>
         </ol>
-        <div class="nav-bottom">
-          <p>Good food brings us together. Find a new favourite today.</p>
-          <a class="text-link" href="#menu">Browse the menu <span aria-hidden="true">↗</span></a>
-        </div>
+        <div class="nav-bottom"><p>Good food brings us together. Find a new favourite today.</p><a class="text-link" href="#menu">Browse the menu <span aria-hidden="true">↗</span></a></div>
       </nav>
 
       <main id="main-content">
         <section class="hero" id="home">
-          <div class="hero-copy">
-            <p class="eyebrow">A warm welcome from Lea</p>
-            <h1>Big flavours.<br><em>Good company.</em></h1>
-            <p class="hero-intro">From comforting Chinese classics to Japanese favourites, discover Asian-inspired food made to brighten your day.</p>
-            <a class="button button-dark" href="#menu">Explore the menu <span aria-hidden="true">↘</span></a>
-            <p class="hero-note"><span class="status-dot"></span> Serving Mandaue City, Cebu</p>
-          </div>
-          <div class="hero-visual">
-            <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&amp;fit=crop&amp;w=1100&amp;q=85" alt="A table filled with colourful Asian dishes">
-            <div class="image-caption"><span>Made with care, served with a smile</span><span>CEBU · PH</span></div>
-            <span class="hero-sticker">MADE<br>WITH <b>♥</b></span>
-          </div>
+          <div class="hero-copy"><p class="eyebrow">A warm welcome from Lea</p><h1>Big flavours.<br><em>Good company.</em></h1><p class="hero-intro">From comforting Chinese classics to Japanese favourites, discover Asian-inspired food made to brighten your day.</p><a class="button button-dark" href="#menu">Explore the menu <span aria-hidden="true">↘</span></a><p class="hero-note"><span class="status-dot"></span> Serving Mandaue City, Cebu</p></div>
+          <div class="hero-visual"><img src="https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&amp;fit=crop&amp;w=1100&amp;q=85" alt="A table filled with colourful Asian dishes"><div class="image-caption"><span>Made with care, served with a smile</span><span>CEBU · PH</span></div><span class="hero-sticker">MADE<br>WITH <b>♥</b></span></div>
           <div class="hero-index"><span>01</span> A LITTLE TASTE OF ASIA</div>
         </section>
 
         <section class="menu-section section-pad" id="menu">
-          <div class="section-heading">
-            <div><p class="eyebrow">The good stuff</p><h2>Find your new favourite</h2></div>
-            <p>Take a little food trip across Asia. Pick a dish and add it to your basket.</p>
-          </div>
-          <div class="filter-row" role="group" aria-label="Filter dishes by cuisine">
-            <button class="filter-button active" type="button" data-filter="All" aria-pressed="true">All dishes</button>
-            <button class="filter-button" type="button" data-filter="Chinese" aria-pressed="false">Chinese</button>
-            <button class="filter-button" type="button" data-filter="Japanese" aria-pressed="false">Japanese</button>
-            <button class="filter-button" type="button" data-filter="Korean" aria-pressed="false">Korean</button>
-            <button class="filter-button" type="button" data-filter="Drinks" aria-pressed="false">Drinks & sides</button>
-          </div>
-          <div class="product-grid" id="product-grid" aria-live="polite"></div>
-          <p class="menu-disclaimer">Sample menu and prices for this website demo. Please confirm availability, ingredients, and final prices with the kitchen.</p>
+          <div class="section-heading"><div><p class="eyebrow">The good stuff</p><h2>Find your new favourite</h2></div><p>Take a little food trip across Asia. Pick a dish and add it to your basket.</p></div>
+          <div class="filter-row" role="group" aria-label="Filter dishes by cuisine"><button class="filter-button active" type="button" data-filter="All" aria-pressed="true">All dishes</button><button class="filter-button" type="button" data-filter="Chinese" aria-pressed="false">Chinese</button><button class="filter-button" type="button" data-filter="Japanese" aria-pressed="false">Japanese</button><button class="filter-button" type="button" data-filter="Korean" aria-pressed="false">Korean</button><button class="filter-button" type="button" data-filter="Drinks" aria-pressed="false">Drinks & sides</button></div>
+          <div class="product-grid" id="product-grid" aria-live="polite"></div><p class="menu-disclaimer">Sample menu and prices for this website demo. Confirm availability, ingredients, and final prices with the kitchen.</p>
         </section>
 
-        <section class="story-section section-pad" id="story">
-          <div class="story-image"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="A welcoming restaurant dining space"></div>
-          <div class="story-copy"><p class="eyebrow">A little about the owner</p><h2>Meet Lea</h2><p>Lea Tapdasan is the heart behind Lea's Asian Kitchen. Based in Mandaue City, Cebu, and studying at MCC, Lea created this little food-shop concept to share the Asian dishes she loves.</p><p>From a cosy bowl of noodles to a plate made for sharing, there's something here for every kind of craving.</p><a class="text-link" href="#contact">Say hello <span aria-hidden="true">↗</span></a></div>
+        <section class="story-section section-pad" id="about">
+          <div class="story-image"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="A welcoming restaurant dining space" loading="lazy"></div>
+          <div class="story-copy"><p class="eyebrow">About Lea</p><h2>A little about the owner</h2><p>Lea Tapdasan is the heart behind Lea's Asian Kitchen. Based in Mandaue City, Cebu, and studying at MCC, Lea created this food-shop concept to share Asian-inspired dishes she loves.</p><p>This is a student website concept; the story and business details can be personalized as the project develops.</p></div>
         </section>
 
-        <section class="contact-section section-pad" id="contact">
-          <div><p class="eyebrow">Come say hello</p><h2>Local flavour,<br><em>right here in Cebu.</em></h2><p>Lea's Asian Kitchen is a small online shop concept based in Mandaue City, Cebu, Philippines.</p><p class="location-note"><span aria-hidden="true">⌖</span> Mandaue City, Cebu, Philippines</p></div>
-          <div class="contact-card"><span class="contact-flower" aria-hidden="true">✳</span><p class="eyebrow">A quick note</p><h3>Let's make it official.</h3><p>This is a student website demo. For actual orders, delivery, or business enquiries, please contact Lea directly and confirm the details first.</p><a class="button button-light" href="#order">Build a sample order <span aria-hidden="true">→</span></a></div>
-        </section>
+        <section class="content-section section-pad" id="profile"><div class="page-heading"><p class="eyebrow">Kitchen profile</p><h2>A small kitchen with a big love for flavour.</h2><p>Lea's Asian Kitchen is a student-created online storefront concept featuring Chinese, Japanese, Korean and other Asian-inspired favourites.</p></div><div class="value-grid"><article><span>01</span><h3>Our idea</h3><p>Make it easy to browse a menu of comforting dishes and discover new favourites.</p></article><article><span>02</span><h3>Our place</h3><p>Inspired by Mandaue City, Cebu, Philippines, and the community around us.</p></article><article><span>03</span><h3>Our promise</h3><p>Keep the menu welcoming, the information clear, and the experience simple.</p></article></div></section>
 
-        <section class="order-section section-pad" id="order">
-          <div class="section-heading order-heading"><div><p class="eyebrow">Almost there</p><h2>Your basket</h2></div><p>Review your sample order, then fill in the form. This demo won't submit payment or send an order.</p></div>
-          <div class="checkout-grid">
-            <div class="basket-panel"><div class="panel-heading"><div><p class="eyebrow">Your picks</p><h3>Order summary</h3></div><a class="text-link" href="#menu">Add more <span aria-hidden="true">↗</span></a></div><div class="basket-items" id="basket-items"></div><p class="basket-total"><span>Estimated total <small>(PHP)</small></span><strong id="basket-total-amount">₱0</strong></p><p class="basket-help">Prices are examples only. Delivery and final pricing are not included.</p></div>
-            <form class="order-form" id="order-form"><p class="eyebrow">Sample checkout</p><h3>Where should we reach you?</h3><label for="customer-name">Your name</label><input id="customer-name" name="name" autocomplete="name" required placeholder="e.g. Alex Santos"><label for="customer-contact">Email or phone</label><input id="customer-contact" name="contact" required placeholder="Your contact details"><label for="customer-note">Order note <span class="optional">(optional)</span></label><textarea id="customer-note" name="note" rows="3" placeholder="Anything the kitchen should know?"></textarea><button class="button button-dark full-button" type="submit">Review sample order <span aria-hidden="true">→</span></button><p class="form-feedback" id="order-feedback" role="status" aria-live="polite"></p><p class="form-small">Demo only: details stay in this browser and are not sent anywhere.</p></form>
-          </div>
-        </section>
+        <section class="content-section team-section section-pad" id="team"><div class="page-heading"><p class="eyebrow">Team chart</p><h2>One small team, working together.</h2><p>A sample organization chart for the kitchen concept. Roles can be updated as the real team is confirmed.</p></div><article class="team-lead"><span class="team-icon" aria-hidden="true">✳</span><p class="eyebrow">OWNER / STUDENT</p><h3>Lea Tapdasan</h3><p>Kitchen concept, menu direction &amp; learning journey</p></article><div class="team-connect" aria-hidden="true"></div><div class="team-roles"><article><span>01</span><h3>Kitchen &amp; menu</h3><p>Food preparation and menu planning</p></article><article><span>02</span><h3>Customer care</h3><p>Questions, order details &amp; feedback</p></article><article><span>03</span><h3>Website &amp; updates</h3><p>Storefront information and project updates</p></article></div></section>
+
+        <section class="content-section history-section section-pad" id="history"><div class="page-heading"><p class="eyebrow">Our story</p><h2>A concept taking shape.</h2><p>Lea's Asian Kitchen is presented as a student website project. Add real milestones here as the business and project story grows.</p></div><ol class="timeline"><li><span>01</span><div><h3>The idea</h3><p>A welcoming online place for Asian-inspired food and a simple sample ordering experience.</p></div></li><li><span>02</span><div><h3>Building the menu</h3><p>Chinese, Japanese, Korean and drinks-and-sides categories make the menu easy to explore.</p></div></li><li><span>03</span><div><h3>Learning by making</h3><p>The website brings together layout, accessible navigation, menu filters, and a sample basket.</p></div></li></ol></section>
+
+        <section class="content-section section-pad" id="services"><div class="page-heading"><p class="eyebrow">What we offer</p><h2>Good food and a friendly experience.</h2></div><div class="service-grid"><article><span>01 / MENU</span><h3>Asian-inspired favourites</h3><p>Browse example dishes from Chinese, Japanese and Korean cuisines.</p><a class="text-link" href="#menu">Explore dishes ↗</a></article><article><span>02 / ORDER</span><h3>Easy sample basket</h3><p>Add dishes, adjust quantities and review an estimated sample total.</p><a class="text-link" href="#checkout">Review basket ↗</a></article><article><span>03 / SUPPORT</span><h3>Questions &amp; updates</h3><p>Check common questions or contact Lea to confirm real business details.</p><a class="text-link" href="#contact">Find contact info ↗</a></article></div></section>
+
+        <section class="contact-section section-pad" id="contact"><div><p class="eyebrow">Come say hello</p><h2>Local flavour,<br><em>right here in Cebu.</em></h2><p>Lea's Asian Kitchen is a small online shop concept based in Mandaue City, Cebu, Philippines.</p><p class="location-note"><span aria-hidden="true">⌖</span> Mandaue City, Cebu, Philippines</p></div><div class="contact-card"><span class="contact-flower" aria-hidden="true">✳</span><p class="eyebrow">A quick note</p><h3>Let's make it official.</h3><p>Business email, phone, opening hours, and delivery area have not been provided. Please confirm these details with Lea before publishing real contact or ordering information.</p><a class="button button-light" href="#checkout">Build a sample order <span aria-hidden="true">→</span></a></div></section>
+
+        <section class="content-section faq-section section-pad" id="faq"><div class="page-heading"><p class="eyebrow">Quick answers</p><h2>Frequently asked questions.</h2></div><div class="faq-list"><details open><summary>Can I add dishes to my basket?<span aria-hidden="true">+</span></summary><p>Yes. Use the menu filters and Add to basket buttons. The sample basket is saved in this browser.</p></details><details><summary>Can I place a real order here?<span aria-hidden="true">+</span></summary><p>No. This is a static student website demo. It does not send an order, arrange delivery, or process payment.</p></details><details><summary>Are the menu prices final?<span aria-hidden="true">+</span></summary><p>No. Menu items and PHP prices are examples. Confirm actual dishes, ingredients, availability, and pricing with Lea.</p></details><details><summary>What payment methods are accepted?<span aria-hidden="true">+</span></summary><p>No real payment is accepted on this demo. The payment section is informational only and does not request payment details.</p></details><details><summary>Where is the kitchen based?<span aria-hidden="true">+</span></summary><p>The concept is based in Mandaue City, Cebu, Philippines. No street address or delivery radius has been provided.</p></details></div></section>
+
+        <section class="content-section portfolio-section section-pad" id="portfolio"><div class="page-heading"><p class="eyebrow">Lea's portfolio</p><h2>Learning by making.</h2><p>This page area follows the portfolio section in CybeXhark.com1. Add Lea's own approved class activities or project links here when available.</p></div><div class="portfolio-grid"><article><span>01 / WEBSITE PROJECT</span><h3>Lea's Asian Kitchen</h3><p>A storefront concept with responsive frames, cuisine filters, and a local sample basket.</p></article><article><span>02 / STUDENT WORK</span><h3>Class activities</h3><p>Reserved for Lea's selected school activities and projects.</p></article><article><span>03 / NEXT STEPS</span><h3>Keep learning</h3><p>More projects can be added here with Lea's permission and final content.</p></article></div></section>
+
+        <section class="menu-section section-pad featured-section" id="featured"><div class="section-heading"><div><p class="eyebrow">Featured dishes</p><h2>Something tasty to start with.</h2></div><a class="text-link" href="#menu">Browse full menu ↗</a></div><div class="featured-picks"><a href="#menu" data-feature-filter="Japanese">Japanese favourites <span>Ramen, maki &amp; more →</span></a><a href="#menu" data-feature-filter="Chinese">Chinese classics <span>Noodles, dumplings &amp; more →</span></a><a href="#menu" data-feature-filter="Korean">Korean-inspired picks <span>Explore the menu →</span></a></div></section>
+
+        <section class="order-section section-pad" id="checkout"><div class="section-heading order-heading"><div><p class="eyebrow">Step 01 / Order review</p><h2>Your basket</h2></div><p>Review your sample order, then fill in the form. This demo won't submit payment or send an order.</p></div><div class="checkout-grid"><div class="basket-panel"><div class="panel-heading"><div><p class="eyebrow">Your picks</p><h3>Order summary</h3></div><a class="text-link" href="#menu">Add more ↗</a></div><div class="basket-items" id="basket-items"></div><p class="basket-total"><span>Estimated total <small>(PHP)</small></span><strong id="basket-total-amount">₱0</strong></p><p class="basket-help">Prices are examples only. Delivery and final pricing are not included.</p></div><form class="order-form" id="order-form"><p class="eyebrow">Sample checkout</p><h3>Where should we reach you?</h3><label for="customer-name">Your name</label><input id="customer-name" name="name" autocomplete="name" required placeholder="Your name"><label for="customer-contact">Email or phone</label><input id="customer-contact" name="contact" required placeholder="Your contact details"><label for="customer-note">Order note <span class="optional">(optional)</span></label><textarea id="customer-note" name="note" rows="3" placeholder="Anything the kitchen should know?"></textarea><button class="button button-dark full-button" type="submit">Save sample order <span aria-hidden="true">→</span></button><p class="form-feedback" id="order-feedback" role="status" aria-live="polite"></p><p class="form-small">Demo only: details stay in this browser and are not sent anywhere.</p></form></div></section>
+
+        <section class="content-section payment-section section-pad" id="payment"><div class="page-heading"><p class="eyebrow">Step 02 / Payment information</p><h2>Payment preview only.</h2><p>This demo does not collect card, GCash, Maya, or other payment information. Please don't enter real payment details.</p></div><div class="payment-options"><article><span>01</span><h3>Cash on delivery</h3><p>Example option only; not available through this demo.</p></article><article><span>02</span><h3>GCash / Maya</h3><p>Displayed as possible local payment options; no transaction is initiated.</p></article><article><span>03</span><h3>Card payment</h3><p>No card information is requested or processed by this website.</p></article></div><p class="demo-warning">No real order, payment, delivery, or confirmation is sent from this static website.</p></section>
+
+        <section class="content-section orders-section section-pad" id="orders"><div class="page-heading"><p class="eyebrow">Order history</p><h2>My sample orders</h2><p>Saved order previews are stored only in this browser.</p></div><div id="orders-list" class="orders-list" aria-live="polite"></div><p class="basket-empty" id="orders-empty">No sample orders saved yet. Add dishes and save a sample order at checkout.</p><button class="text-button" id="clear-orders" type="button" hidden>Clear saved sample orders</button></section>
       </main>
 
-      <aside class="info-aside" aria-label="Kitchen information">
-        <section class="aside-card"><p class="aside-title">A note from Lea</p><div class="aside-emblem" aria-hidden="true">蓮</div><h2>Made with care.<br>Shared with joy.</h2><p class="aside-copy">A student-led food shop concept celebrating the flavours of Asia.</p></section>
-        <section class="aside-card"><p class="aside-title">On the menu</p><div class="cuisine-list"><span>Chinese</span><span>Japanese</span><span>Korean</span><span>More to come</span></div></section>
-        <section class="aside-card"><p class="aside-title">Find our kitchen</p><p class="aside-copy">Mandaue City<br>Cebu, Philippines</p></section>
-      </aside>
+      <aside class="info-aside" aria-label="Kitchen information"><section class="aside-card"><p class="aside-title">A note from Lea</p><div class="aside-emblem" aria-hidden="true">蓮</div><h2>Made with care.<br>Shared with joy.</h2><p class="aside-copy">A student-led food shop concept celebrating the flavours of Asia.</p></section><section class="aside-card"><p class="aside-title">On the menu</p><div class="cuisine-list"><span>Chinese</span><span>Japanese</span><span>Korean</span><span>Drinks &amp; sides</span></div></section><section class="aside-card"><p class="aside-title">Find our kitchen</p><p class="aside-copy">Mandaue City<br>Cebu, Philippines</p></section></aside>
     </div>
-
-    <footer class="site-footer"><span>© <span id="year"></span> Lea's Asian Kitchen · A student website concept</span><div class="footer-links"><a href="#story">About Lea</a><a href="#menu">Menu</a><a href="#contact">Contact</a></div></footer>
+    <footer class="site-footer"><span>© <span id="year"></span> Lea's Asian Kitchen · A student website concept</span><div class="footer-links"><a href="#about">About Lea</a><a href="#menu">Menu</a><a href="#contact">Contact</a><a href="#faq">FAQ</a></div></footer>
   </div>
 </body>
 </html>
